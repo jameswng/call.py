@@ -18,7 +18,7 @@ import re
 pargs = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter, description='invoke a command against a list of items read from STDIN')
 pargs.add_argument('-n', '--no_exec', dest='noexec', action='count', help='do not run command')
 
-# --- there can only be one
+# --- only one option is valid
 xgroup = pargs.add_mutually_exclusive_group(required=False)
 xgroup.add_argument('-1', dest='arg1', action='count', help='only one item per command invocation')
 xgroup.add_argument('-m', '--max_args', metavar="<count>", dest='max_args', type=int, help='maximum number of items per command invocation, default=500', default=500)
