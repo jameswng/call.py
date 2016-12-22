@@ -22,10 +22,6 @@ xgroup = pargs.add_mutually_exclusive_group(required=False)
 xgroup.add_argument('-1', dest='arg1', action='count', help='only one item per command invocation')
 xgroup.add_argument('-m', '--max_args', metavar="<count>", dest='max_args', type=int, help='maximum number of items per command invocation, default=500', default=500)
 
-# --- mutally exclusive
-#pargs.add_argument('--every', dest='every', action='count', help='for every <sub>, create a new instance with each item')
-#pargs.add_argument('--each', dest='every', action='count', help='replace each <sub> with the next item. Only use as many items as there are <sub> per invocation')
-
 # --- rest of options
 pargs.add_argument('-f', '--finalarg', metavar="<arg>", dest='finalarg', help='added as last argument on the command line after all items')
 pargs.add_argument('--sub', metavar="<string>", dest='sub', help='substitute string for item list, default=\"{}\"')
@@ -69,19 +65,19 @@ def subarg(cmdargs, itemlist):
 			# ---
 			# substr found as part of string (ie. destdir/{})
 			# split the string, insert the items, stitch it back together.
-			#narg = []
-			#b = a.split(args.sub)
-			#if (b[0]):
-			#	narg.append(b[0])
-			#b.pop(0)
-			#for c in b:
-			#	narg.extend(itemlist)
-			#	if c: 
-			#		narg.append(c)
-			#ncmdargs.append(args.sep.join(narg))
+			narg = []
+			b = a.split(args.sub)
+			if (b[0]):
+				narg.append(b[0])
+			b.pop(0)
+			for c in b:
+				narg.extend(itemlist)
+				if c: 
+					narg.append(c)
+			ncmdargs.append(args.sep.join(narg))
 			#---
 			# ...probably can (and should be) replace with;
-			ncmdargs.append(a.replace(args.sub, args.sep.join(itemlist)))
+			#ncmdargs.append(a.replace(args.sub, args.sep.join(itemlist)))
 
 	return(ncmdargs)
 
