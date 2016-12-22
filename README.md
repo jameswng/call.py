@@ -23,7 +23,7 @@ optional arguments:
   -f <arg>, --finalarg <arg>
                         added as last argument on the command line after all
                         items
-  --sub <string>        subsitute string for first item, default="{}"
+  --sub <string>        subsitute string for item list, default="{}"
   --sep <string>        string use to seperate items when substituting into
                         argument, default=" "
   -v, --verbose         print command to stderr before execution
