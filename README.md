@@ -1,5 +1,6 @@
-call.py is a replacement for the xargs command. The reason for rewriting the tool is no longer rememebered.
 
+##call.py is a replacement for the xargs command. The reason for rewriting the tool is no longer rememebered.
+```
 usage: call.py [-h] [-n] [-1 | -m <count>] [-f <arg>] [--sub <string>] [-v]
                command ...
 
