@@ -3,7 +3,8 @@
 
 *call.py* is a replacement for the xargs command.
 ```
-usage: call.py [-h] [-n] [-1 | -m <count>] [-f <arg>] [--sub <string>] [-v]
+usage: call.py [-h] [-n] [-1 | -m <count>] [-f <arg>] [--sub <string>]
+               [--sep <string>] [-v]
                command ...
 
 invoke a command against a list of items read from STDIN
@@ -23,4 +24,6 @@ optional arguments:
                         added as last argument on the command line after all
                         items
   --sub <string>        subsitute string for first item, default="{}"
+  --sep <string>        string use to seperate items when substituting into
+                        argument, default=" "
   -v, --verbose         print command to stderr before execution
