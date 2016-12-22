@@ -12,7 +12,6 @@ import argparse
 import os
 import sys
 import subprocess
-import re
 
 # --- options parsing and management
 pargs = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter, description='invoke a command against a list of items read from STDIN')
@@ -26,6 +25,7 @@ xgroup.add_argument('-m', '--max_args', metavar="<count>", dest='max_args', type
 # --- rest of options
 pargs.add_argument('-f', '--finalarg', metavar="<arg>", dest='finalarg', help='added as last argument on the command line after all items')
 pargs.add_argument('--sub', metavar="<string>", dest='sub', help='subsitute string for first item, default=\"{}\"')
+pargs.add_argument('--sep', metavar="<string>", dest='sep', help='string use to seperate items when substituting into argument, default=\" \"', default=' ')
 pargs.add_argument('-v', '--verbose', dest='verbose', action='count', help='print command to stderr before execution')
 
 # --- command to execute
@@ -62,8 +62,9 @@ def subarg(cmdargs, itemlist):
 		elif not args.sub in a:
 			ncmdargs.append(a)
 		else:
+			# ---
 			# substr found as part of string (ie. destdir/{})
-			# split the string, insert the items, stitich it back together.
+			# split the string, insert the items, stitch it back together.
 			narg = []
 			b = a.split(args.sub)
 			if (b[0]):
@@ -73,7 +74,11 @@ def subarg(cmdargs, itemlist):
 				narg.extend(itemlist)
 				if c: 
 					narg.append(c)
-			ncmdargs.append("".join(narg))
+			ncmdargs.append(args.sep.join(narg))
+
+			#---
+			# ...probably can (and should be) replace with;
+			#ncmdargs.append(a.replace(args.sub, args.sep.join(itemlist)))
 
 	return(ncmdargs)
 
