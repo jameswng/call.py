@@ -28,7 +28,7 @@ xgroup.add_argument('-m', '--max_args', metavar="<count>", dest='max_args', type
 
 # --- rest of options
 pargs.add_argument('-f', '--finalarg', metavar="<arg>", dest='finalarg', help='added as last argument on the command line after all items')
-pargs.add_argument('--sub', metavar="<string>", dest='sub', help='subsitute string for item list, default=\"{}\"')
+pargs.add_argument('--sub', metavar="<string>", dest='sub', help='substitute string for item list, default=\"{}\"')
 pargs.add_argument('--sep', metavar="<string>", dest='sep', help='string use to seperate items when substituting into argument, default=\" \"', default=' ')
 pargs.add_argument('-v', '--verbose', dest='verbose', action='count', help='print command to stderr before execution')
 
